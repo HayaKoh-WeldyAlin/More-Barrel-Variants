@@ -10,17 +10,17 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
-public class MblvItemInit {
-    public static final BlockItem OAK_BARREL_I = new BlockItem(MblvBlockInit.OAK_BARREL, new Item.Properties());
-    public static final BlockItem BIRCH_BARREL_I = new BlockItem(MblvBlockInit.BIRCH_BARREL, new Item.Properties());
-    public static final BlockItem JUNGLE_BARREL_I = new BlockItem(MblvBlockInit.JUNGLE_BARREL, new Item.Properties());
-    public static final BlockItem ACACIA_BARREL_I = new BlockItem(MblvBlockInit.ACACIA_BARREL, new Item.Properties());
-    public static final BlockItem DARK_OAK_BARREL_I = new BlockItem(MblvBlockInit.DARK_OAK_BARREL, new Item.Properties());
-    public static final BlockItem MANGROVE_BARREL_I = new BlockItem(MblvBlockInit.MANGROVE_BARREL, new Item.Properties());
-    public static final BlockItem CHERRY_BARREL_I = new BlockItem(MblvBlockInit.CHERRY_BARREL, new Item.Properties());
-    public static final BlockItem BAMBOO_BARREL_I = new BlockItem(MblvBlockInit.BAMBOO_BARREL, new Item.Properties());
-    public static final BlockItem CRIMSON_BARREL_I = new BlockItem(MblvBlockInit.CRIMSON_BARREL, new Item.Properties().fireResistant());
-    public static final BlockItem WARPED_BARREL_I = new BlockItem(MblvBlockInit.WARPED_BARREL, new Item.Properties().fireResistant());
+public class MoreBarrelItems {
+    public static final BlockItem OAK_BARREL_I = new BlockItem(MoreBarrelBlocks.OAK_BARREL, new Item.Properties());
+    public static final BlockItem BIRCH_BARREL_I = new BlockItem(MoreBarrelBlocks.BIRCH_BARREL, new Item.Properties());
+    public static final BlockItem JUNGLE_BARREL_I = new BlockItem(MoreBarrelBlocks.JUNGLE_BARREL, new Item.Properties());
+    public static final BlockItem ACACIA_BARREL_I = new BlockItem(MoreBarrelBlocks.ACACIA_BARREL, new Item.Properties());
+    public static final BlockItem DARK_OAK_BARREL_I = new BlockItem(MoreBarrelBlocks.DARK_OAK_BARREL, new Item.Properties());
+    public static final BlockItem MANGROVE_BARREL_I = new BlockItem(MoreBarrelBlocks.MANGROVE_BARREL, new Item.Properties());
+    public static final BlockItem CHERRY_BARREL_I = new BlockItem(MoreBarrelBlocks.CHERRY_BARREL, new Item.Properties());
+    public static final BlockItem BAMBOO_BARREL_I = new BlockItem(MoreBarrelBlocks.BAMBOO_BARREL, new Item.Properties());
+    public static final BlockItem CRIMSON_BARREL_I = new BlockItem(MoreBarrelBlocks.CRIMSON_BARREL, new Item.Properties().fireResistant());
+    public static final BlockItem WARPED_BARREL_I = new BlockItem(MoreBarrelBlocks.WARPED_BARREL, new Item.Properties().fireResistant());
 
 
     public static void registerItems() {

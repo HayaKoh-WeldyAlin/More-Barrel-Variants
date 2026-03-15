@@ -13,7 +13,7 @@ import net.minecraft.world.level.material.MapColor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MblvBlockInit {
+public class MoreBarrelBlocks {
     public static final MoreBarrelBlock OAK_BARREL = new MoreBarrelBlock(MapColor.WOOD, "oak");
     public static final MoreBarrelBlock BIRCH_BARREL = new MoreBarrelBlock(MapColor.SAND, "birch");
     public static final MoreBarrelBlock JUNGLE_BARREL = new MoreBarrelBlock(MapColor.DIRT, "jungle");
