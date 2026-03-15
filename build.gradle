@@ -33,7 +33,7 @@ repositories {
 
 
 loom {
-	accessWidenerPath = file("src/main/resources/lolmblv.accesswidener")
+	accessWidenerPath = file("src/main/resources/more_barrel_variants.accesswidener")
 }
 
 def getReleaseVersion(minecraftVersion) {

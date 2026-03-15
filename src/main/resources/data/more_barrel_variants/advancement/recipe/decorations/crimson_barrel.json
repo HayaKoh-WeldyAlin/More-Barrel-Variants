@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "minecraft:spruce_planks"
+              "minecraft:crimson_planks"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:barrel"
+        "recipe": "more_barrel_variants:crimson_barrel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "more_barrel_variants:spruce_barrel"
+      "more_barrel_variants:crimson_barrel"
     ]
   },
   "sends_telemetry_event": false

@@ -22,9 +22,9 @@
 		]
 	},
 	"mixins": [
-		"lolmblv.mixins.json"
+		"more_barrel_variants.mixins.json"
 	],
-	"accessWidener": "lolmblv.accesswidener",
+	"accessWidener": "more_barrel_variants.accesswidener",
 	"depends": {
 		"fabricloader": ">=${loader_version}",
 		"minecraft": ">${minecraft_version_0} <${minecraft_version_1}",

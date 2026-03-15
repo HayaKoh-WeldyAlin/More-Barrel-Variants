@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "barrel",
+  "pattern": [
+    "#-#",
+    "# #",
+    "#-#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cherry_planks"
+    },
+    "-": {
+      "item": "minecraft:cherry_slab"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "more_barrel_variants:cherry_barrel"
+  }
+}
