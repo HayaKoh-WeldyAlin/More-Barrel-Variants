@@ -10,6 +10,8 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
+import java.util.List;
+
 import static de.pnku.more_barrel_variants.MoreBarrelVariants.withModId;
 
 public class MoreBarrelItems {
@@ -24,27 +26,29 @@ public class MoreBarrelItems {
     public static final Item CRIMSON_BARREL = new BlockItem(MoreBarrelBlocks.CRIMSON_BARREL, new Item.Properties().fireResistant());
     public static final Item WARPED_BARREL = new BlockItem(MoreBarrelBlocks.WARPED_BARREL, new Item.Properties().fireResistant());
 
-    private static Item previouslyRegisteredItem = Items.BARREL;
+
+    public static final List<Item> more_barrels = List.of(
+            OAK_BARREL,
+            BIRCH_BARREL,
+            JUNGLE_BARREL,
+            ACACIA_BARREL,
+            DARK_OAK_BARREL,
+            MANGROVE_BARREL,
+            CHERRY_BARREL,
+            BAMBOO_BARREL,
+            CRIMSON_BARREL,
+            WARPED_BARREL
+    );
 
     public static void registerItems() {
-        registerItem(OAK_BARREL);
-        registerItem(BIRCH_BARREL);
-        registerItem(JUNGLE_BARREL);
-        registerItem(ACACIA_BARREL);
-        registerItem(DARK_OAK_BARREL);
-        registerItem(MANGROVE_BARREL);
-        registerItem(CHERRY_BARREL);
-        registerItem(BAMBOO_BARREL);
-        registerItem(CRIMSON_BARREL);
-        registerItem(WARPED_BARREL);
-    }
-
-    private static void registerItem(Item barrel) {
-        String barrelName = ((MoreBarrelBlock) ((BlockItem) barrel).getBlock()).barrelWoodType + "_barrel";
-        Registry.register(BuiltInRegistries.ITEM, withModId(barrelName), barrel);
-        // mod_id change from lolmblv to more_barrel_variants - alias for backwards compatibility
-            BuiltInRegistries.ITEM.addAlias(withModId(barrelName, true), withModId(barrelName));
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> entries.addAfter(previouslyRegisteredItem, barrel));
-        previouslyRegisteredItem = barrel;
+        for (int i = 0; i != more_barrels.size(); ++i) {
+            Item barrel = more_barrels.get(i);
+            Item previousBarrel = i == 0 ? Items.BARREL : more_barrels.get(i - 1);
+            String barrelName = ((MoreBarrelBlock) ((BlockItem) barrel).getBlock()).barrelWoodType + "_barrel";
+            Registry.register(BuiltInRegistries.ITEM, withModId(barrelName), barrel);
+            // mod_id change from lolmblv to more_barrel_variants - alias for backwards compatibility
+                BuiltInRegistries.ITEM.addAlias(withModId(barrelName, true), withModId(barrelName));
+            ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> entries.addAfter(previousBarrel, barrel));
+        }
     }
 }
