@@ -17,11 +17,18 @@ public class MoreBarrelVariants implements ModInitializer {
         MoreBarrelBlocks.registerBlocks();
         MoreBarrelItems.registerItems();
         MoreBarrelPointOfInterestTypes.init();
+        initECModule();
     }
 
     public static ResourceLocation withModId(String path) {return withModId(path, false);}
 
     public static ResourceLocation withModId(String path, boolean legacy) {
         return ResourceLocation.fromNamespaceAndPath(legacy ? LEGACY_MOD_ID : MOD_ID, path);
+    }
+
+    private void initECModule() {
+        if (FabricLoader.getInstance().isModLoaded("everycomp")) {
+            MoreBarrelEveryCompat.init();
+        }
     }
 }

@@ -5,6 +5,8 @@ import de.pnku.more_barrel_variants.block.MoreBarrelBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -26,6 +28,7 @@ public class MoreBarrelItems {
     public static final Item CRIMSON_BARREL = new BlockItem(MoreBarrelBlocks.CRIMSON_BARREL, new Item.Properties().fireResistant());
     public static final Item WARPED_BARREL = new BlockItem(MoreBarrelBlocks.WARPED_BARREL, new Item.Properties().fireResistant());
 
+    public static final TagKey<Item> BARRELS_TAG = TagKey.create(Registries.ITEM, MoreBarrelVariants.withModId("barrels"));
 
     public static final List<Item> more_barrels = List.of(
             OAK_BARREL,

@@ -1,0 +1,68 @@
+package de.pnku.more_barrel_variants.compat.ec;
+
+import de.pnku.more_barrel_variants.block.MoreBarrelBlock;
+import de.pnku.more_barrel_variants.init.MoreBarrelBlocks;
+import de.pnku.more_barrel_variants.init.MoreBarrelItems;
+import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
+import net.mehvahdjukaar.every_compat.api.TabAddMode;
+import net.mehvahdjukaar.every_compat.modules.EveryCompatModule;
+import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
+import net.mehvahdjukaar.moonlight.api.set.wood.VanillaWoodTypes;
+import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
+import net.mehvahdjukaar.every_compat.api.EveryCompatAPI;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.ai.village.poi.PoiTypes;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+
+
+import static de.pnku.more_barrel_variants.MoreBarrelVariants.*;
+import static de.pnku.more_barrel_variants.init.MoreBarrelBlocks.OAK_BARREL;
+
+public class MoreBarrelEveryCompat {
+    public static void init() {
+        EveryCompatAPI.registerModule(new MoreBarrelECModule());
+    }
+
+    public static class MoreBarrelECModule extends EveryCompatModule {
+        public final SimpleEntrySet<WoodType, Block> barrelSet;
+
+        public MoreBarrelECModule() {
+            super(MOD_ID, "mblv");
+            String pre = "block/oak_barrel_";
+            barrelSet = SimpleEntrySet.builder(
+                    WoodType.class, "barrel",
+                    () -> (Block) OAK_BARREL, () -> VanillaWoodTypes.OAK,
+                    woodType -> new MoreBarrelBlock(
+                            woodType.planks.defaultMapColor(),
+                            woodType.getSound(),
+                            woodType.getTypeName()
+                    ))
+                    .addTag(MoreBarrelBlocks.BARRELS_TAG)
+                    .addTag(MoreBarrelItems.BARRELS_TAG)
+                    .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                    .addTile(() -> BlockEntityType.BARREL)
+                    .defaultRecipe()
+                    .setTabKey(CreativeModeTabs.FUNCTIONAL_BLOCKS)
+                    .setTabMode(TabAddMode.AFTER_SAME_TYPE)
+                    .addTexture(makeMyRes(pre + "bottom"))
+                    .addTextureM(makeMyRes(pre + "side"), makeMyRes(pre + "side_m"))
+                    .addTextureM(makeMyRes(pre + "top"), makeMyRes(pre + "top_m"))
+                    .addTexture(makeMyRes(pre + "top_open"))
+
+                    .build();
+            this.addEntry(barrelSet);
+        }
+
+        @Override
+        public void onModInit() {
+            super.onModInit();
+            RegHelper.addExtraPOIStatesRegistration(event ->
+                    barrelSet.blocks.values().forEach(block -> event.addBlock(PoiTypes.FISHERMAN, block))
+            );
+        }
+    }
+}
+
