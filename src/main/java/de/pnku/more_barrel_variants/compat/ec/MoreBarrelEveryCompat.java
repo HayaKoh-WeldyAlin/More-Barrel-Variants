@@ -4,7 +4,6 @@ import de.pnku.more_barrel_variants.block.MoreBarrelBlock;
 import de.pnku.more_barrel_variants.init.MoreBarrelBlocks;
 import de.pnku.more_barrel_variants.init.MoreBarrelItems;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
-import net.mehvahdjukaar.every_compat.api.TabAddMode;
 import net.mehvahdjukaar.every_compat.modules.EveryCompatModule;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.mehvahdjukaar.moonlight.api.set.wood.VanillaWoodTypes;
@@ -27,7 +26,7 @@ public class MoreBarrelEveryCompat {
     }
 
     public static class MoreBarrelECModule extends EveryCompatModule {
-        public final SimpleEntrySet<WoodType, Block> barrelSet;
+        public static SimpleEntrySet<WoodType, Block> barrelSet;
 
         public MoreBarrelECModule() {
             super(MOD_ID, "mblv");
@@ -40,18 +39,17 @@ public class MoreBarrelEveryCompat {
                             woodType.getSound(),
                             woodType.getTypeName()
                     ))
-                    .addTag(MoreBarrelBlocks.BARRELS_TAG)
-                    .addTag(MoreBarrelItems.BARRELS_TAG)
+                    .addTag(MoreBarrelBlocks.BARRELS_TAG, Registries.BLOCK)
+                    .addTag(MoreBarrelItems.BARRELS_TAG, Registries.ITEM)
                     .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                     .addTile(() -> BlockEntityType.BARREL)
                     .defaultRecipe()
                     .setTabKey(CreativeModeTabs.FUNCTIONAL_BLOCKS)
-                    .setTabMode(TabAddMode.AFTER_SAME_TYPE)
-                    .addTexture(makeMyRes(pre + "bottom"))
-                    .addTextureM(makeMyRes(pre + "side"), makeMyRes(pre + "side_m"))
-                    .addTextureM(makeMyRes(pre + "top"), makeMyRes(pre + "top_m"))
-                    .addTexture(makeMyRes(pre + "top_open"))
-
+                    .addTexture(withModId(pre + "bottom"))
+                    .addTextureM(withModId(pre + "side"), withModId(pre + "side_m"))
+                    .addTextureM(withModId(pre + "top"), withModId(pre + "top_m"))
+                    .addTexture(withModId(pre + "top_open"))
+                    .copyParentDrop()
                     .build();
             this.addEntry(barrelSet);
         }
