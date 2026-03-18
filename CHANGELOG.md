@@ -7,3 +7,6 @@
       > This does not affect existing saves negatively, as the mod will still recognize the old ID and migrate it to the new one seamlessly.
     - Update main _Block_ and _Item Tag_ for consistency: 
       Now both Blocks and Items use `#more_barrel_variants:barrels`
+
+<br></br>
+<sub>License update to [CC-BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) (previously [MIT](https://opensource.org/licenses/MIT))</sub>
