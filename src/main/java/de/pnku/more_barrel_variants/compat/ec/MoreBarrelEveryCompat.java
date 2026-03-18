@@ -6,10 +6,13 @@ import de.pnku.more_barrel_variants.init.MoreBarrelItems;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.modules.EveryCompatModule;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
+import net.mehvahdjukaar.moonlight.api.set.BlockType;
 import net.mehvahdjukaar.moonlight.api.set.wood.VanillaWoodTypes;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.every_compat.api.EveryCompatAPI;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -52,6 +55,12 @@ public class MoreBarrelEveryCompat {
                     .copyParentDrop()
                     .build();
             this.addEntry(barrelSet);
+        }
+        @Override
+        public boolean isEntryAlreadyRegistered(String entrySetId, ResourceLocation blockId, BlockType blockType, Registry<?> registry) {
+            // Preventing Pale Oak Barrels already added by "More Variants: Pale Oak Barrel"
+            if (blockId.getPath().endsWith("pale_oak_barrel")) return true;
+            else return super.isEntryAlreadyRegistered(entrySetId, blockId, blockType, registry);
         }
 
         @Override
